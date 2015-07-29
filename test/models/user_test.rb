@@ -5,6 +5,10 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(name: 'Joe Dirt', email: 'joedirt@example.com', password: 'foobar', password_confirmation: 'foobar')
   end
 
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
+
   test 'should_be_valid' do
     assert @user.valid?
   end
