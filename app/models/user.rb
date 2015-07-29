@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
-# test with self#
+
+  # test with self#
   def User.new_token
     SecureRandom.urlsafe_base64
   end
