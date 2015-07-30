@@ -11,13 +11,14 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
-  def self.digest(string)
+  # test with self#digest
+  def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  # test with self#
+  # test with self#new_token
   def User.new_token
     SecureRandom.urlsafe_base64
   end
