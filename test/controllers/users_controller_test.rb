@@ -4,7 +4,7 @@ class UsersControllerTest < ActionController::TestCase
 
   def setup
     @user = users(:nicholas)
-    @other_user = users(:archer)
+    @other_user = users(:travis)
   end
 
   test "should redirect destroy when not logged in" do
@@ -37,6 +37,13 @@ class UsersControllerTest < ActionController::TestCase
     patch :update, id: @user, user: { name: @user.name, email: @user.email }
     assert_not flash.empty?
     assert_redirected_to login_url
+  end
+
+  test "should not allow the admin attribute to be edited via the web" do
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: { password: 'password', password_confirmation: 'password', admin: true }
+    assert_not @other_user.reload.admin?
   end
 
   test 'shoud redirect edit when logged in a wrong user' do
