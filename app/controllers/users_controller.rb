@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "Almost done! Check your email, we sent you a link to activate your account."
       redirect_to root_url
     else
       render 'new'
