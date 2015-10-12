@@ -1,5 +1,9 @@
-<h1>UserMailer#account_activation</h1>
+<h1>Snikr</h1>
+
+<p>Hi there <%= @user.name %>!</p>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+Welcome to the Snikr! The the worlds most passive-aggressive social networking site... Click on the link below to activate your account:
 </p>
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
