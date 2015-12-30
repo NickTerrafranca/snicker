@@ -1,9 +1,16 @@
 # # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  follower: nicholas
+  followed: lana
 
-# one:
-#   follower_id: 1
-#   followed_id: 1
+two:
+  follower: nicholas
+  followed: travis
 
-# two:
-#   follower_id: 1
-#   followed_id: 1
+three:
+  follower: lana
+  followed: nicholas
+
+four:
+  follower: tony
+  followed: nicholas
