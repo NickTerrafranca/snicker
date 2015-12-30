@@ -1,16 +1,15 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
   follower: nicholas
   followed: lana
 
 two:
-  follower: nicholas
-  followed: travis
+  follower: travis
+  followed: nicholas
 
 three:
   follower: lana
-  followed: nicholas
+  followed: travis
 
 four:
   follower: tony
-  followed: nicholas
+  followed: travis
