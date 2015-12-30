@@ -38,15 +38,13 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
-  class << self
-    def digest(string)
-      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-      BCrypt::Password.create(string, cost: cost)
-    end
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
-    def new_token
-      SecureRandom.urlsafe_base64
-    end
+  def self.new_token
+    SecureRandom.urlsafe_base64
   end
 
   def activate
@@ -71,15 +69,15 @@ class User < ActiveRecord::Base
   end
 
   def follow(other_user)
-    active_relationships.create(followed_id: other_user.id)
+    self.active_relationships.create(followed_id: other_user.id)
   end
 
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    self.active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
   def following?(other_user)
-    following.include?(other_user)
+    self.following.include?(other_user)
   end
 
   private
