@@ -32,7 +32,6 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
-# these do not work
   test "should follow a user with Ajax" do
     assert_difference '@user.following.count', 1 do
       xhr :post, relationships_path, followed_id: @other.id
