@@ -85,20 +85,29 @@ p {
 /* footer */
 
 footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
+  color: #909090;
+  padding: 0 40px 40px;
+  background-color: #222222;
   a {
-    color: #555;
+    margin-top: 10px;
+    color: #FFF;
     &:hover {
       color: #222;
     }
   }
   small {
+    margin-top: 10px;
     float: left;
   }
   ul {
+    margin-top: 10px;
     float: right;
     list-style: none;
     li {
